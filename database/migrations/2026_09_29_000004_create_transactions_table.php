@@ -1,0 +1,3 @@
+<?php
+use Illuminate\Database\Migrations\Migration; use Illuminate\Database\Schema\Blueprint; use Illuminate\Support\Facades\Schema;
+return new class extends Migration { public function up(){Schema::create('transactions',function(Blueprint $t){$t->id();$t->foreignId('user_id')->constrained('users')->cascadeOnDelete();$t->foreignId('deposit_id')->nullable()->constrained('deposits')->nullOnDelete();$t->enum('type',['setoran_masuk','penarikan']);$t->decimal('amount',12,2);$t->text('description')->nullable();$t->timestamp('created_at')->useCurrent();});} public function down(){Schema::dropIfExists('transactions');} };

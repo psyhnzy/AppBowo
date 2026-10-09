@@ -1,0 +1,1 @@
+@extends('layouts.app') @section('content')<div class="card"><h1>Leaderboard Nasabah</h1><table class="table"><tr><th>#</th><th>Nama</th><th>Poin</th><th>Saldo</th></tr>@foreach($users as $i=>$u)<tr><td>{{ $i+1 }}</td><td>{{ $u->name }}</td><td>{{ $u->points }}</td><td>Rp {{ number_format($u->balance,0,',','.') }}</td></tr>@endforeach</table></div>@endsection
