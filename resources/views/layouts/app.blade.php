@@ -1,3 +1,28 @@
-<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{ $title ?? 'BOWO' }}</title><link rel="stylesheet" href="{{ asset('css/app.css') }}"></head><body>
-<nav class="nav"><strong>BOWO</strong><a href="{{ route('home') }}">Beranda</a><a href="{{ route('leaderboard') }}">Leaderboard</a>@auth @if(auth()->user()->role==='admin')<a href="{{ route('admin.dashboard') }}">Admin</a>@else<a href="{{ route('user.dashboard') }}">Dashboard</a><a href="{{ route('user.setor') }}">Setor</a><a href="{{ route('user.riwayat') }}">Riwayat</a>@endif<form method="POST" action="{{ route('logout') }}" style="margin-left:auto">@csrf<button class="btn gray">Keluar</button></form>@else<a href="{{ route('login') }}" style="margin-left:auto">Login</a><a href="{{ route('register') }}">Daftar</a>@endauth</nav>
-<main class="container">@if(session('success'))<div class="alert">{{ session('success') }}</div>@endif @if(session('error'))<div class="alert error">{{ session('error') }}</div>@endif @if($errors->any())<div class="alert error">{{ $errors->first() }}</div>@endif @yield('content')</main></body></html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ $title ?? 'BOWO — Bank of Waste Online' }}</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS (Font & Scrollbar) -->
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    @stack('styles')
+</head>
+<body class="{{ $bodyClass ?? 'bg-slate-50 text-slate-800' }}">
+    @yield('body')
+    @stack('scripts')
+</body>
+</html>
