@@ -18,7 +18,7 @@
                 <a href="#tentang"      class="hover:text-emerald-600 transition relative after:absolute after:-bottom-0.5 after:left-0 after:w-0 hover:after:w-full after:h-0.5 after:bg-emerald-500 after:transition-all">Tentang</a>
                 <a href="#cara-kerja"   class="hover:text-emerald-600 transition relative after:absolute after:-bottom-0.5 after:left-0 after:w-0 hover:after:w-full after:h-0.5 after:bg-emerald-500 after:transition-all">Cara Kerja</a>
                 <a href="#jenis-sampah" class="hover:text-emerald-600 transition relative after:absolute after:-bottom-0.5 after:left-0 after:w-0 hover:after:w-full after:h-0.5 after:bg-emerald-500 after:transition-all">Jenis Sampah</a>
-                <a href="{{ route('leaderboard') }}" class="hover:text-emerald-600 transition relative after:absolute after:-bottom-0.5 after:left-0 after:w-0 hover:after:w-full after:h-0.5 after:bg-emerald-500 after:transition-all">🏆 Leaderboard</a>
+                <a href="{{ route('leaderboard') }}" class="hover:text-emerald-600 transition relative after:absolute after:-bottom-0.5 after:left-0 after:w-0 hover:after:w-full after:h-0.5 after:bg-emerald-500 after:transition-all">Leaderboard</a>
             </div>
 
             {{-- Tombol Aksi Desktop --}}
