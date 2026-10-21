@@ -15,12 +15,19 @@
                 @forelse ($rankings as $index => $rank)
                     @php
                         $pos = $index + 1;
-                        $badge = $pos === 1 ? '🥇' : ($pos === 2 ? '🥈' : ($pos === 3 ? '🥉' : '#' . $pos));
-                        $bg = $pos === 1 ? 'bg-amber-50/70 border border-amber-200/60' : '';
+                        $badgeClass = match($pos) {
+                            1 => 'bg-amber-100 text-amber-800 border-amber-300 shadow-sm',
+                            2 => 'bg-slate-200 text-slate-700 border-slate-300',
+                            3 => 'bg-amber-800/10 text-amber-900 border-amber-800/20',
+                            default => 'bg-slate-100 text-slate-500 border-slate-200',
+                        };
+                        $bg = $pos === 1 ? 'bg-amber-50/60 border border-amber-200/60' : '';
                     @endphp
                     <div class="flex items-center justify-between py-3.5 sm:py-4 px-3 sm:px-4 rounded-xl {{ $bg }} transition hover:bg-slate-50/80">
                         <div class="flex items-center space-x-3 sm:space-x-4 min-w-0 pr-2">
-                            <span class="text-xl sm:text-2xl font-black w-8 sm:w-10 text-center text-slate-700 shrink-0">{{ $badge }}</span>
+                            <span class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-black border {{ $badgeClass }} shrink-0">
+                                #{{ $pos }}
+                            </span>
                             <div class="min-w-0">
                                 <h3 class="font-bold text-slate-800 text-sm sm:text-base truncate">{{ $rank->name }}</h3>
                                 <p class="text-xs text-slate-500">Telah mendaur ulang <b class="text-slate-700">{{ number_format((float)($rank->total_weight ?? 0), 1) }} kg</b></p>
